@@ -7,8 +7,8 @@ import { MdOutlineFileUpload } from "react-icons/md";
 const feedCard: React.FC = () => {
   return (
     <div className="border-b-1 border-l-1 border-r-1 border-slate-600 p-4 hover:bg-slate-800 transition cursor-pointer">
-      <div className="grid grid-cols-12">
-        <div className="col-span-1">
+      <div className="grid grid-cols-12 gap-2">
+        <div className="col-span-1 ">
           <Image
             src="https://avatars.githubusercontent.com/u/188732151?v=4"
             alt="User Avatar"

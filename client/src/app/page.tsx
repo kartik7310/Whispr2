@@ -56,7 +56,23 @@ export default function Home() {
           <button className=" font-bold text-2xl py-2 px-4 w-full  bg-blue-500 text-white rounded-2xl ">Tweet</button>
         </div>
       </div>
-      <div className="col-span-6 border-r-2 border-l-2 border-slate-600">
+      <div className="col-span-6 border-r-2 border-l-2 border-slate-600 h-screen overflow-y-scroll scrollbar-hide">
+        <FeedCard/>
+        <FeedCard/>
+        <FeedCard/>
+        <FeedCard/>
+        <FeedCard/>
+        <FeedCard/>
+        <FeedCard/>
+        <FeedCard/>
+        <FeedCard/>
+        <FeedCard/>
+        <FeedCard/>
+        <FeedCard/>
+        <FeedCard/>
+        <FeedCard/>
+        <FeedCard/>
+        <FeedCard/>
         <FeedCard/>
       </div>
       <div className="col-span-3 "></div>
