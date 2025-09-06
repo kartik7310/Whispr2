@@ -2,21 +2,21 @@ import express from 'express';
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@as-integrations/express5';
 import bodyParser from 'body-parser';
-
+import { User } from './user';
 export async function initServer() {
   const app = express();
 
   const typeDefs = `
+   ${User.types}
+
     type Query {
-      hello: String
-      sayHelloToMe(name:String!):String
+      ${User.query}
     }
   `;
 
   const resolvers = {
     Query: {
-      hello: () => 'Hello World',
-      sayHelloToMe:(parent:any,{name}:{name:String})=>`hey${name}`
+     ...User.resolvers.queries
     },
   };
 

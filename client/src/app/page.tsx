@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import { FaTwitter } from "react-icons/fa6";
 import { IoIosHome } from "react-icons/io";
@@ -7,6 +8,7 @@ import { MdEmail } from "react-icons/md";
 import { FaBookmark } from "react-icons/fa";
 import { FaUserAlt } from "react-icons/fa";
 import FeedCard from "@/app/Components/feedCard/feedCard";
+import { GoogleLogin } from "@react-oauth/google";
 export default function Home() {
   interface SidebarButton{
     title:string,
@@ -75,7 +77,10 @@ export default function Home() {
         <FeedCard/>
         <FeedCard/>
       </div>
-      <div className="col-span-3 "></div>
+      <div className="col-span-3 ">
+       <GoogleLogin onSuccess={(cred)=>console.log(cred)
+       }/>
+      </div>
     </div>
   </div>
   );

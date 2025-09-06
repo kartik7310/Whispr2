@@ -16,14 +16,20 @@
   "dependencies": {
     "@apollo/server": "^5.0.0",
     "@as-integrations/express5": "^1.1.2",
+    "@types/jsonwebtoken": "^9.0.10",
+    "axios": "^1.11.0",
     "body-parser": "^2.2.0",
     "express": "^5.1.0",
-    "graphql": "^16.11.0"
+    "graphql": "^16.11.0",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
+    "@prisma/client": "^6.15.0",
     "@types/express": "^5.0.3",
-    "@types/node": "^24.3.0",
+    "@types/node": "^24.3.1",
+    "prisma": "^6.15.0",
     "ts-node-dev": "^2.0.0",
+    "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   }
 }
