@@ -16,18 +16,21 @@ const queries = {
       }
      ) ;
      
+  
+     
      const User = await prisma.user.findFirst({
       where:{
         email:data.email
       }
      });
 
+
      if(!User){
       await prisma.user.create({
         data:{
           email:data.email,
-          firstName:data.firstName,
-          lastName:data.lastName,
+          firstName:data. given_name,
+          lastName:data. family_name,
           profileImageURL:data.picture
         }
       })

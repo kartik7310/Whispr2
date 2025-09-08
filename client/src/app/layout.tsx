@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { Toaster } from 'react-hot-toast';
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,15 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-      
+  className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+>
+  <GoogleOAuthProvider clientId="572563638497-6jecpue55q0ap6549chh55r1vupv4ngs.apps.googleusercontent.com">
+    {children}
+    <Toaster />
+  </GoogleOAuthProvider>
+</body>
 
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-       <GoogleOAuthProvider clientId="572563638497-6jecpue55q0ap6549chh55r1vupv4ngs.apps.googleusercontent.com">
-        {children}
-       </GoogleOAuthProvider>
-           
-      </body>
     </html>
   );
 }
