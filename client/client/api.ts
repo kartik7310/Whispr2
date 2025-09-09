@@ -4,7 +4,7 @@ export const graphqlClient = new GraphQLClient("http://localhost:8080/graphql",{
   headers:()=>{
     return {
       Authorization:isClient 
-      ?`Bearer ${window.localStorage.getItem("Whisper2") ||""}`
+      ?`Bearer ${window.localStorage.getItem("whisper2") ||""}`
       :"",
     }
   }

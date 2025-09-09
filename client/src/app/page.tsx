@@ -45,16 +45,16 @@ export default function Home() {
         const { verifyGoogleToken } = await graphqlClient.request<{
           verifyGoogleToken: BackendAuthResponse;
         }>(verifyUserGoogleTokenQuery, { token: googleToken });
-
+        
         toast.success("Verification success");
         console.log("verification success", verifyGoogleToken);
 
-      if(googleToken){
-        window.localStorage.setItem("whisper2",googleToken)
+      if(verifyGoogleToken){
+        window.localStorage.setItem("whisper2",verifyGoogleToken)
       }
-      } catch (err) {
+      } catch (err:any) {
         toast.error("Google verification failed");
-        console.error(err);
+        console.error(err.message);
       }
     },
     []

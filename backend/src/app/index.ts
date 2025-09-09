@@ -4,6 +4,7 @@ import { expressMiddleware } from '@as-integrations/express5';
 import bodyParser from 'body-parser';
 import { User } from './user';
 import cors from "cors"
+import JWTService from '../services/jwt';
 export async function initServer() {
   const app = express();
   
@@ -27,10 +28,28 @@ export async function initServer() {
   });
 
   await graphQlServer.start();
+app.use(bodyParser.json())
 
-  // Add body-parser to parse JSON request bodies before Apollo Middleware
- app.use(cors({ origin: "http://localhost:3000", credentials: true }));
-  app.use('/graphql', bodyParser.json(), expressMiddleware(graphQlServer));
+ app.use( "/graphql",cors({ origin: "http://localhost:3000", credentials: true }));
+  app.use('/graphql', expressMiddleware(graphQlServer, {
+  context: async ({ req, res }) => {
+    const authHeader = req.headers.authorization;
+    let user = null;
+
+    if (authHeader && authHeader.startsWith("Bearer ")) {
+      const token = authHeader.split(" ")[1];
+      try {
+        user = JWTService.decodeToken(token);
+      } catch (err:any) {
+        console.warn("Invalid JWT:", err.message);
+        user = null;
+      }
+    }
+
+    return { user };
+  }
+}));
+
 
   return app;
 }
