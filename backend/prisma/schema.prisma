@@ -23,4 +23,15 @@ model User{
   profileImageURL String
   createdAt DateTime @default(now())
   updateAt DateTime @updatedAt
+  posts  Post[]
+}
+
+model Post {
+  id       String @id @default(uuid())
+  content  String
+  imageUrl String?
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id])
+ createdAt DateTime @default(now())
+  updateAt DateTime @updatedAt
 }
